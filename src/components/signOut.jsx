@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "@material-tailwind/react";
 import "@/app/globals.css";
 
 export default function SignOut({ token, setToken }) {
@@ -8,9 +7,5 @@ export default function SignOut({ token, setToken }) {
     setToken("");
   }
 
-  return (
-    <Button color="red" onClick={handleSignOut}>
-      Sign Out
-    </Button>
-  );
+  return <button onClick={handleSignOut}>Sign Out</button>;
 }
