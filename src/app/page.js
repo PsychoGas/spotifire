@@ -1,10 +1,14 @@
 "use client";
 import SignIn from "@/components/signIn";
 import SignOut from "@/components/signOut";
+import FetchData from "@/components/fetchData";
 import Tracks from "@/components/tracks";
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
+
 export default function Page() {
   const [token, setToken] = useState("");
+  const [userData, setUserData] = useState(null);
 
   return (
     <>
@@ -12,8 +16,9 @@ export default function Page() {
         SpotiFire
       </h1>
       {!token && <SignIn token={token} setToken={setToken} />}
+      <FetchData token={token} userData={userData} setUserData={setUserData} />
       <SignOut token={token} setToken={setToken} />
-      {token && <Tracks token={token} />}
+      {token && <Tracks userData={userData} />}
     </>
   );
 }

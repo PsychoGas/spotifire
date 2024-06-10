@@ -2,29 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "@/app/globals.css";
 
-export default function Tracks({ token }) {
-  const [userData, setUserData] = useState(null);
-  useEffect(() => {
-    if (token) {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(
-            "https://api.spotify.com/v1/me/albums",
-            {
-              headers: { Authorization: `Bearer ${token}` },
-            }
-          );
-          console.log("User Data:", response.data);
-          setUserData(response.data);
-        } catch (error) {
-          console.error("Failed to fetch user data:", error);
-        }
-      };
-
-      fetchData();
-    }
-  }, [token]);
-
+export default function Tracks({ userData }) {
   return userData ? (
     <>
       <h1>Album Name: {userData.items[0].album.name}</h1>
