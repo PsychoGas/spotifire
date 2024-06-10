@@ -7,5 +7,13 @@ export default function SignOut({ token, setToken }) {
     setToken("");
   }
 
-  return <button onClick={handleSignOut}>Sign Out</button>;
+  return (
+    <div className="flex justify-center pt-10">
+      <button onClick={handleSignOut} className="btn-18">
+        <span className="text-container">
+          <span className="text">Sign Out</span>
+        </span>
+      </button>
+    </div>
+  );
 }

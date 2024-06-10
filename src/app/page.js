@@ -12,7 +12,7 @@ export default function Page() {
 
   return (
     <>
-      <h1 className="text-5xl md:text-6xl font-extrabold text-center text-white drop-shadow-lg">
+      <h1 className="text-5xl md:text-6xl font-extrabold text-center text-white drop-shadow-lg shadow-lg">
         SpotiFire
       </h1>
       {!token && <SignIn token={token} setToken={setToken} />}

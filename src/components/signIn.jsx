@@ -28,12 +28,17 @@ export default function SignIn({ token, setToken }) {
   }, [setToken]);
 
   return (
-    <button
-      onClick={() => {
-        window.location.href = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scopes}`;
-      }}
-    >
-      Login with Spotify
-    </button>
+    <div className="flex justify-center pt-10">
+      <button
+        className="btn-18"
+        onClick={() => {
+          window.location.href = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scopes}`;
+        }}
+      >
+        <span className="text-container">
+          <span className="text">Login With Spotify</span>
+        </span>
+      </button>
+    </div>
   );
 }
