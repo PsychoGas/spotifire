@@ -21,9 +21,8 @@ export default function Playlists({ userPlaylists }) {
               <Card
                 Name={playlist.name}
                 Cover={playlist.images[0].url}
-                Number={playlist.tracks.total}
+                NumberOfTracks={playlist.tracks.total}
               />
-              {console.log(playlist.tracks.total)}
             </div>
           </li>
         ))}
