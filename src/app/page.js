@@ -2,13 +2,15 @@
 import SignIn from "@/components/signIn";
 import SignOut from "@/components/signOut";
 import FetchData from "@/components/fetchData";
-import Tracks from "@/components/tracks";
+import Albums from "@/components/albums";
+import Playlists from "@/components/playlists";
 
 import { useState } from "react";
 
 export default function Page() {
   const [token, setToken] = useState("");
-  const [userData, setUserData] = useState(null);
+  const [userAlbums, setuserAlbums] = useState(null);
+  const [userPlaylists, setuserPlaylists] = useState(null);
 
   return (
     <>
@@ -16,9 +18,22 @@ export default function Page() {
         SpotiFire
       </h1>
       {!token && <SignIn token={token} setToken={setToken} />}
-      <FetchData token={token} userData={userData} setUserData={setUserData} />
+      <FetchData
+        token={token}
+        userAlbums={userAlbums}
+        setuserAlbums={setuserAlbums}
+        userPlaylists={userPlaylists}
+        setuserPlaylists={setuserPlaylists}
+      />
       {token && <SignOut token={token} setToken={setToken} />}
-      {token && <Tracks userData={userData} />}
+      <div className="pt-5">
+        <h1>Albums</h1>
+        {userAlbums && token && <Albums userAlbums={userAlbums} />}
+      </div>
+      ----------------------------
+      <h1>Playlists</h1>
+      ----------------------------
+      {userPlaylists && token && <Playlists userPlaylists={userPlaylists} />}
     </>
   );
 }
