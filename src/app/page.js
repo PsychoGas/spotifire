@@ -4,6 +4,7 @@ import SignOut from "@/components/signOut";
 import FetchData from "@/components/fetchData";
 import Albums from "@/components/albums";
 import Playlists from "@/components/playlists";
+import Card from "@/components/ui/card";
 
 import { useState } from "react";
 
