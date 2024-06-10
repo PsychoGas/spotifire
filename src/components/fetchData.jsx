@@ -23,9 +23,5 @@ export default function FetchData({ token, userData, setUserData }) {
     }
   }, [token]);
 
-  return userData ? (
-    <h3>Successfully Fetched Data</h3>
-  ) : (
-    <h3>Fetching Data...</h3>
-  );
+  return userData ? <h3>Successfully Fetched Data</h3> : <h3></h3>;
 }

@@ -17,7 +17,7 @@ export default function Page() {
       </h1>
       {!token && <SignIn token={token} setToken={setToken} />}
       <FetchData token={token} userData={userData} setUserData={setUserData} />
-      <SignOut token={token} setToken={setToken} />
+      {token && <SignOut token={token} setToken={setToken} />}
       {token && <Tracks userData={userData} />}
     </>
   );
