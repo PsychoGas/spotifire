@@ -8,7 +8,7 @@ export default async function fetchYoutubeVideoIds(searchQueries) {
         "https://www.googleapis.com/youtube/v3/search",
         {
           params: {
-            key: "AIzaSyBdV5CTNVAl1sFEXBTBOspWzEU-JCY4Lwg",
+            key: "AIzaSyDbKYZiDMEMBd9BfIIeb6kzEctMBCcc548",
             part: "snippet",
             maxResults: 1,
             type: "video",

@@ -6,6 +6,7 @@ import Playlists from "@/components/playlists";
 import SelectedCount from "@/components/ui/selected";
 import fetchTracksFromPlaylistId from "@/lib/fetchTracksFromID.js";
 import fetchYoutubeVideoIds from "@/lib/fetchYoutubeId.js";
+import VideoButtons from "@/lib/convertToMp3";
 
 import { useState } from "react";
 
@@ -15,8 +16,9 @@ export default function Page() {
   const [userPlaylists, setuserPlaylists] = useState(null);
   const [selectedPlaylists, setSelectedPlaylists] = useState([]);
   let tracks = [];
-  let idArray = [];
+  const [idArray, setIdArray] = useState([]);
   let youtubeLinks = [];
+  const [clickedId, setClickedId] = useState(false);
 
   const togglePlaylistSelection = (playlistId) => {
     setSelectedPlaylists((prevSelectedPlaylists) => {
@@ -35,9 +37,12 @@ export default function Page() {
   };
 
   const handleFetchYoutubeIds = async () => {
-    idArray = await fetchYoutubeVideoIds(tracks);
+    let tempIdArray = await fetchYoutubeVideoIds(tracks);
+    setIdArray(tempIdArray);
     console.log("Youtube IDs Fetched");
     console.log(idArray);
+    setClickedId(true);
+    console.log("clicked - ", clickedId);
   };
 
   const generateYoutubeLinks = () => {
@@ -101,14 +106,15 @@ export default function Page() {
           </span>
         </button>
       </div>
-      <div className="flex justify-center pt-10 pb-10">
+      {/* <div className="flex justify-center pt-10 pb-10">
         <button className="btn-18" onClick={generateYoutubeLinks}>
           <span className="text-container">
             <span className="text">Generate Links</span>
             {console.log()}
           </span>
         </button>
-      </div>
+      </div> */}
+      <VideoButtons videoIds={idArray} />
     </>
   );
 }
