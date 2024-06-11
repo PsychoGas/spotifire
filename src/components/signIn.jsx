@@ -8,7 +8,7 @@ export default function SignIn({ token, setToken }) {
   const redirectUri = "https://spotifire-psi.vercel.app";
   const authEndpoint = "https://accounts.spotify.com/authorize";
   const responseType = "token";
-  const scopes = "user-library-read+playlist-read-private";
+  const scopes = "playlist-read-private";
 
   useEffect(() => {
     const hash = window.location.hash;
