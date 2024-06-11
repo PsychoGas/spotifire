@@ -13,6 +13,7 @@ export default function Page() {
   const [userAlbums, setuserAlbums] = useState(null);
   const [userPlaylists, setuserPlaylists] = useState(null);
   const [selectedPlaylists, setSelectedPlaylists] = useState([]);
+  let tracks = [];
 
   const togglePlaylistSelection = (playlistId) => {
     setSelectedPlaylists((prevSelectedPlaylists) => {
@@ -22,6 +23,12 @@ export default function Page() {
         return [...prevSelectedPlaylists, playlistId];
       }
     });
+  };
+
+  const handleFetchTracks = async () => {
+    tracks = await fetchTracksFromPlaylistId(selectedPlaylists, token);
+    console.log("Tracks Fetched");
+    console.log(tracks);
   };
 
   return (
@@ -59,11 +66,7 @@ export default function Page() {
           togglePlaylistSelection={togglePlaylistSelection}
         />
       )}
-      <button
-        onClick={() => fetchTracksFromPlaylistId(selectedPlaylists, token)}
-      >
-        Send Request
-      </button>
+      <button onClick={handleFetchTracks}>Send Request</button>
     </>
   );
 }

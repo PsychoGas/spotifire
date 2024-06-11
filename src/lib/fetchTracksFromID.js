@@ -21,5 +21,5 @@ export default async function fetchTracksFromPlaylistId(playlistIds, token) {
     })
   );
 
-  console.log(tracks);
+  return tracks;
 }
