@@ -2,9 +2,9 @@
 import SignIn from "@/components/signIn";
 import SignOut from "@/components/signOut";
 import FetchData from "@/components/fetchData";
-import Albums from "@/components/albums";
 import Playlists from "@/components/playlists";
 import SelectedCount from "@/components/ui/selected";
+import fetchTracksFromPlaylistId from "@/lib/fetchTracksFromID.js";
 
 import { useState } from "react";
 
@@ -59,6 +59,11 @@ export default function Page() {
           togglePlaylistSelection={togglePlaylistSelection}
         />
       )}
+      <button
+        onClick={() => fetchTracksFromPlaylistId(selectedPlaylists, token)}
+      >
+        Send Request
+      </button>
     </>
   );
 }

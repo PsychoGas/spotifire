@@ -18,7 +18,7 @@ export default function FetchData({
               headers: { Authorization: `Bearer ${token}` },
             }
           );
-          console.log("User Albums:", response.data);
+          // console.log("User Albums:", response.data);
           setuserAlbums(response.data);
         } catch (error) {
           console.error("Failed to fetch user data:", error);
@@ -33,7 +33,7 @@ export default function FetchData({
               headers: { Authorization: `Bearer ${token}` },
             }
           );
-          console.log("User Playlists:", response.data);
+          // console.log("User Playlists:", response.data);
           setuserPlaylists(response.data);
         } catch (error) {
           console.error("Failed to fetch user data:", error);

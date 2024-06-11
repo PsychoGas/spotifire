@@ -4,6 +4,7 @@ export default function Playlists({
   selectedPlaylists,
   togglePlaylistSelection,
 }) {
+  console.log(selectedPlaylists);
   return (
     <>
       <ul
@@ -33,7 +34,6 @@ export default function Playlists({
           </li>
         ))}
       </ul>
-      {console.log(selectedPlaylists)}
     </>
   );
 }
