@@ -1,5 +1,9 @@
 import Card from "./ui/card";
-export default function Playlists({ userPlaylists }) {
+export default function Playlists({
+  userPlaylists,
+  selectedPlaylists,
+  togglePlaylistSelection,
+}) {
   return (
     <>
       <ul
@@ -22,11 +26,14 @@ export default function Playlists({ userPlaylists }) {
                 Name={playlist.name}
                 Cover={playlist.images[0].url}
                 NumberOfTracks={playlist.tracks.total}
+                isSelected={selectedPlaylists.includes(playlist.id)}
+                onClick={() => togglePlaylistSelection(playlist.id)}
               />
             </div>
           </li>
         ))}
       </ul>
+      {console.log(selectedPlaylists)}
     </>
   );
 }
