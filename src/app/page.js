@@ -37,12 +37,17 @@ export default function Page() {
   };
 
   const handleFetchYoutubeIds = async () => {
-    let tempIdArray = await fetchYoutubeVideoIds(tracks);
-    setIdArray(tempIdArray);
-    console.log("Youtube IDs Fetched");
-    console.log(idArray);
-    setClickedId(true);
-    console.log("clicked - ", clickedId);
+    if (tracks.length === 0) {
+      alert("Please fetch tracks first");
+      return;
+    } else {
+      let tempIdArray = await fetchYoutubeVideoIds(tracks);
+      setIdArray(tempIdArray);
+      console.log("Youtube IDs Fetched");
+      console.log(idArray);
+      setClickedId(true);
+      console.log("clicked - ", clickedId);
+    }
   };
 
   const generateYoutubeLinks = () => {
@@ -102,7 +107,7 @@ export default function Page() {
       <div className="flex justify-center pt-10">
         <button className="btn-18" onClick={handleFetchYoutubeIds}>
           <span className="text-container">
-            <span className="text">Get Youtube IDs</span>
+            <span className="text">Click to Proceed</span>
           </span>
         </button>
       </div>
@@ -114,7 +119,7 @@ export default function Page() {
           </span>
         </button>
       </div> */}
-      <VideoButtons videoIds={idArray} />
+      {token && <VideoButtons videoIds={idArray} />}
     </>
   );
 }
