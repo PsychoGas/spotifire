@@ -1,32 +1,42 @@
-const data = [
-  "Good Life (with G-Eazy & Kehlani) by G-Eazy",
-  'Tokyo Drift (Fast & Furious) - From "The Fast And The Furious: Tokyo Drift" Soundtrack by Teriyaki Boyz',
-  "favorite by Isabel LaRosa",
-  "Wake Up in the Sky by Gucci Mane",
-  "Gasolina by Daddy Yankee",
-  "My City by 24kGoldn",
-  "How Bad Do You Want It (Oh Yeah) by Sevyn Streeter",
-  "Him & I (with Halsey) by G-Eazy",
-  "Deadwood by Really Slow Motion",
-  "ROCKSTAR (feat. Roddy Ricch) by DaBaby",
-  "Zoom! by 1nonly",
-  "Lean On by Major Lazer",
-  "FE!N (feat. Playboi Carti) by Travis Scott",
-  "Better by Khalid",
-  "The Machine - Sped Up by Reed Wonder",
-  "Next Level by A$ton Wyld",
-  "My Oh My (feat. DaBaby) by Camila Cabello",
-  "Stereo Love by Edward Maya",
-  "Under The Influence by Chris Brown",
-  "Look At Me! by XXXTENTACION",
-  "Formula by Labrinth",
-  "Danza Kuduro by Don Omar",
-  "This Is What You Came For by Calvin Harris",
-  "LOOK AT ME! by TOKYOSLEEP",
-  "Toca Toca - Radio Edit by Fly Project",
-  "Surround Sound (feat. 21 Savage & Baby Tate) by JID",
-  "fukumean by Gunna",
-  "Mood (feat. iann dior) by 24kGoldn",
-  "Move! by 1nonly",
-  "Loco Contigo (feat. J. Balvin & Tyga) by DJ Snake",
+import axios from "axios";
+
+export default async function fetchYoutubeVideoIds(searchQueries) {
+  try {
+    const promises = searchQueries.map(async (searchQuery) => {
+      const response = await axios.get(
+        "https://www.googleapis.com/youtube/v3/search",
+        {
+          params: {
+            key: "AIzaSyAqSUvx0ziby0vMduTnLGjXG9KrNOxIjpM",
+            part: "snippet",
+            maxResults: 1,
+            type: "video",
+            q: searchQuery,
+          },
+        }
+      );
+      const videoId = response.data.items[0]?.id.videoId;
+      return videoId || null;
+    });
+
+    const results = await Promise.all(promises);
+    return results.filter((videoId) => videoId !== null); // Filter out any null results
+  } catch (error) {
+    console.error("Error fetching video data:", error);
+    return [];
+  }
+}
+
+// Usage example
+const searchQueries = [
+  "Him and I by G Eazy",
+  "Shape of You by Ed Sheeran",
+  "Blinding Lights by The Weeknd",
 ];
+fetchYoutubeVideoIds(searchQueries)
+  .then((videoIds) => {
+    console.log("Video IDs:", videoIds);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
