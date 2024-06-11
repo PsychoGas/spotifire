@@ -50,31 +50,21 @@ export default function Page() {
     }
   };
 
-  const generateYoutubeLinks = () => {
-    if (idArray.length === 0) {
-      alert("Please fetch Youtube IDs first");
-      return;
-    } else {
-      youtubeLinks = idArray.map(
-        (id) => `https://www.youtube.com/watch?v=${id}`
-      );
-      console.log(youtubeLinks);
-    }
-  };
-
   return (
     <>
       <h1 className="pt-10 text-5xl md:text-6xl font-extrabold text-center text-white drop-shadow-lg shadow-lg">
         SpotiFire
       </h1>
       {!token && <SignIn token={token} setToken={setToken} />}
-      <FetchData
-        token={token}
-        userAlbums={userAlbums}
-        setuserAlbums={setuserAlbums}
-        userPlaylists={userPlaylists}
-        setuserPlaylists={setuserPlaylists}
-      />
+      {token && (
+        <FetchData
+          token={token}
+          userAlbums={userAlbums}
+          setuserAlbums={setuserAlbums}
+          userPlaylists={userPlaylists}
+          setuserPlaylists={setuserPlaylists}
+        />
+      )}
       {token && <SignOut token={token} setToken={setToken} />}
       {/* <div className="pt-5">
         {token && userAlbums && (
