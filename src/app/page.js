@@ -56,15 +56,7 @@ export default function Page() {
         SpotiFire
       </h1>
       {!token && <SignIn token={token} setToken={setToken} />}
-      {token && (
-        <FetchData
-          token={token}
-          userAlbums={userAlbums}
-          setuserAlbums={setuserAlbums}
-          userPlaylists={userPlaylists}
-          setuserPlaylists={setuserPlaylists}
-        />
-      )}
+      {token && <FetchData token={token} setuserPlaylists={setuserPlaylists} />}
       {token && <SignOut token={token} setToken={setToken} />}
       {/* <div className="pt-5">
         {token && userAlbums && (
