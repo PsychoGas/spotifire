@@ -1,0 +1,42 @@
+.cardDown {
+  width: 100vw;
+  height: 500px;
+  border-radius: 4px;
+  background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+  display: flex;
+  gap: 5px;
+  padding: 0.4em;
+}
+
+.cardDown p {
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.5s;
+  background: #000;
+  border: 1px solid #ff5a91;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardDown p:hover {
+  flex: 4;
+}
+
+.cardDown p span {
+  min-width: 14em;
+  padding: 0.5em;
+  text-align: center;
+  transform: rotate(-90deg);
+  transition: all 0.5s;
+  text-transform: uppercase;
+  color: #ff568e;
+  letter-spacing: 0.1em;
+}
+
+.cardDown p:hover span {
+  transform: rotate(0);
+}

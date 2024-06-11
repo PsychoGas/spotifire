@@ -1,3 +1,4 @@
+import "./downloadStyle.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -30,15 +31,20 @@ const VideoButtons = ({ videoIds }) => {
   }, [videoIds]);
 
   return (
-    <div>
-      {videos.map((video) => (
-        <button
-          key={video.link}
-          onClick={() => (window.location.href = video.link)}
-        >
-          {video.title}
-        </button>
-      ))}
+    <div className="pt-10 py-5 px-10 d-flex justify-content-center align-items-center">
+      <h1 className="text-3xl font-bold text-center text-white drop-shadow-lg shadow-lg py-5">
+        Click Below To Download
+      </h1>
+      <div className={videoIds ? "cardDown" : ""}>
+        {videos.map((video) => (
+          <p
+            key={video.link}
+            onClick={() => (window.location.href = video.link)}
+          >
+            <span>{video.title}</span>
+          </p>
+        ))}
+      </div>
     </div>
   );
 };
