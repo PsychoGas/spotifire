@@ -1,13 +1,14 @@
 import axios from "axios";
 
 export default async function fetchYoutubeVideoIds(searchQueries) {
+  console.log("Fetch Youtube Video IDs Called");
   try {
     const promises = searchQueries.map(async (searchQuery) => {
       const response = await axios.get(
         "https://www.googleapis.com/youtube/v3/search",
         {
           params: {
-            key: "AIzaSyAqSUvx0ziby0vMduTnLGjXG9KrNOxIjpM",
+            key: "AIzaSyBdV5CTNVAl1sFEXBTBOspWzEU-JCY4Lwg",
             part: "snippet",
             maxResults: 1,
             type: "video",
@@ -26,17 +27,3 @@ export default async function fetchYoutubeVideoIds(searchQueries) {
     return [];
   }
 }
-
-// Usage example
-const searchQueries = [
-  "Him and I by G Eazy",
-  "Shape of You by Ed Sheeran",
-  "Blinding Lights by The Weeknd",
-];
-fetchYoutubeVideoIds(searchQueries)
-  .then((videoIds) => {
-    console.log("Video IDs:", videoIds);
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
