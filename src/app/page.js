@@ -16,6 +16,7 @@ export default function Page() {
   const [selectedPlaylists, setSelectedPlaylists] = useState([]);
   let tracks = [];
   let idArray = [];
+  let youtubeLinks = [];
 
   const togglePlaylistSelection = (playlistId) => {
     setSelectedPlaylists((prevSelectedPlaylists) => {
@@ -39,11 +40,17 @@ export default function Page() {
     console.log(idArray);
   };
 
-  const createYoutubeLinks = (videoIds) => {
-  return videoIds.map((id) => `https://www.youtube.com/watch?v=${id}`);
+  const generateYoutubeLinks = () => {
+    if (idArray.length === 0) {
+      alert("Please fetch Youtube IDs first");
+      return;
+    } else {
+      youtubeLinks = idArray.map(
+        (id) => `https://www.youtube.com/watch?v=${id}`
+      );
+      console.log(youtubeLinks);
+    }
   };
-
-
 
   return (
     <>
@@ -87,10 +94,18 @@ export default function Page() {
           </span>
         </button>
       </div>
-      <div className="flex justify-center pt-10 pb-10">
+      <div className="flex justify-center pt-10">
         <button className="btn-18" onClick={handleFetchYoutubeIds}>
           <span className="text-container">
             <span className="text">Get Youtube IDs</span>
+          </span>
+        </button>
+      </div>
+      <div className="flex justify-center pt-10 pb-10">
+        <button className="btn-18" onClick={generateYoutubeLinks}>
+          <span className="text-container">
+            <span className="text">Generate Links</span>
+            {console.log()}
           </span>
         </button>
       </div>
